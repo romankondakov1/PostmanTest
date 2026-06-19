@@ -1,0 +1,587 @@
+{
+  "info": {
+    "_postman_id": "c8a7870b-0e50-43f2-9cb4-40a133db6ff1",
+    "name": "Roma",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43103848",
+    "_collection_link": "https://go.postman.co/collection/43103848-c8a7870b-0e50-43f2-9cb4-40a133db6ff1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Fake Api (Product)",
+      "item": [
+        {
+          "name": "Get List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET id/5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product id is 5\", function () {\r",
+                  "    const response = pm.response.json()\r",
+                  "    pm.expect(response.id).to.eql(5);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/5",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET by slag/halo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  "\r",
+                  " const response = pm.response.json()\r",
+                  "\r",
+                  "pm.test(\"Title is halo\", function () {\r",
+                  "    pm.expect(response.title).to.eql(\"halo\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Slug is halo\", function () {\r",
+                  "    pm.expect(response.slug).to.eql(\"halo\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/slug/halo",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "slug",
+                "halo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Статус-код Created\", function () {",
+                  "    pm.response.to.have.status('Created');",
+                  "});",
+                  "",
+                  "const response = pm.response.json()",
+                  "",
+                  "pm.test(\"Title\", function () {",
+                  "    pm.collectionVariables.set(\"title\", response.title);",
+                  "    pm.expect(response.title).to.eql(response.title);",
+                  "});",
+                  "",
+                  "pm.test(\"Slug\", function () {",
+                  "     pm.collectionVariables.set(\"slug\", response.slug);",
+                  "    pm.expect(response.slug).to.eql(response.slug);",
+                  "});",
+                  "",
+                  "pm.test(\"Price is 200\", function () {",
+                  "    pm.expect(response.price).to.eql(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Category id is 1\", function () {",
+                  "    pm.expect(response.category.id).to.eql(1);",
+                  "});",
+                  "",
+                  "",
+                  "pm.collectionVariables.set(\"product_id\", response.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n  \"title\": \"{{$randomFullName}} Products\",\r\n  \"price\": 200,\r\n  \"description\": \"Best Product\",\r\n  \"categoryId\": 1,\r\n  \"images\": [\"https://placehold.co/600x400\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET id after POST",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Title is romans-product\", function () {\r",
+                  "    const response = pm.response.json()\r",
+                  "    pm.expect(response.title).to.eql(\"Romans Products\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Slug is roman-product\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.slug).to.eql(\"romans-products\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Price is 200\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.price).to.eql(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Category id is 1\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.category.id).to.eql(1);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Category name is Clothes\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.category.name).to.eql(\"Clothes\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/5",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  "\r",
+                  "const response = pm.response.json()\r",
+                  "\r",
+                  "pm.test(\"Title\", function () {\r",
+                  "    pm.expect(response.title).to.eql(response.title);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Slug\", function () {\r",
+                  "    pm.expect(response.slug).to.eql(response.slug);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Category id is 1\", function () {\r",
+                  "    pm.expect(response.category.id).to.eql(1);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Price should be a number\", function () {\r",
+                  "    pm.expect(response.price).to.be.a(\"number\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n  \"title\": \"{{$randomFullName}} Products\",\r\n  \"price\": {{$randomPrice}},\r\n  \"description\": \"Best Product ever\",\r\n  \"categoryId\": 1,\r\n  \"images\": [\"https://placehold.co/600x400\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/{{product_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "{{product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET id after PUT",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/{{product_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "{{product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/{{product_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "{{product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET id after DELETE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код Bad Request\", function () {\r",
+                  "    pm.response.to.have.status('Bad Request');\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products/{{product_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products",
+                "{{product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Paganation",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Статус-код 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Статус-код OK\", function () {\r",
+                  "    pm.response.to.have.status('OK');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.escuelajs.co/api/v1/products?offset=0&limit=15",
+              "protocol": "https",
+              "host": [
+                "api",
+                "escuelajs",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "15"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "product_id",
+      "value": ""
+    },
+    {
+      "key": "title",
+      "value": ""
+    },
+    {
+      "key": "slug",
+      "value": ""
+    },
+    {
+      "key": "title1",
+      "value": ""
+    },
+    {
+      "key": "slug1",
+      "value": ""
+    }
+  ]
+}
