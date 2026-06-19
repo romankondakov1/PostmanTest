@@ -21,7 +21,7 @@ jobs:
           npm install -g newman-reporter-html
 
       - name: Run Newman tests
-        run: npx newman run Tests/Roma.postman_collection.json -r html
+        run: npx newman run "Tests/Roma.postman_collection.json" -r html
 
       - name: Upload Newman report
         if: ${{ !cancelled() }}
